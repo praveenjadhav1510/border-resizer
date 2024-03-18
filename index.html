@@ -18,7 +18,7 @@
 	<div class="functions">
 		<div class="borders">
 			<div>
-				<input type="number" id="wv" min="100" max="350" value="200" class="width-input" placeholder="width" oninput="changewidth();">
+				<input type="number" id="wv" min="100" max="350" class="width-input" placeholder="width min-100px max-350px" oninput="changewidth();">
 			</div>
 			<div>
 				<span id="lt">left top</span>
@@ -47,10 +47,10 @@
 	const b3 = document.getElementById('rb');
 	const b4 = document.getElementById('lb');
 
-	var lt = '10px';
-	var rt = '10px';
-	var lb = '10px';
-	var rb = '10px';
+	var lt = '10px'; //default value
+	var rt = '10px'; //default value
+	var lb = '10px'; //default value
+	var rb = '10px'; //default value
 
 	function resizeborder(input) {
 		let value = input.value + 'px';
