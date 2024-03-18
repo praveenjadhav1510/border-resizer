@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="jarvis.css">
+</head>
+<body>
+<h2 align="center"> Border resizer </h2>
+<div class="main">
+	<span id="mw">200x200px</span>
+	<div class="out-box">
+		<div class="in-box" id="box">
+			<span id="code">-Jarvis</span>
+		</div>
+	</div>
+	<div class="functions">
+		<div class="borders">
+			<div>
+				<input type="number" id="wv" min="100" max="350" value="200" class="width-input" placeholder="width" oninput="changewidth();">
+			</div>
+			<div>
+				<span id="lt">left top</span>
+				<input type="range" value="10" min="0" max="200" id="blt" oninput="resizeborder(this);">
+			</div>
+			<div>
+				<span id="rt">right top</span>
+				<input type="range" value="10" min="0" max="200" id="brt" oninput="resizeborder(this);">
+			</div>
+			<div>
+				<span id="lb">left bottom</span>
+				<input type="range" value="10" min="0" max="200" id="blb" oninput="resizeborder(this);">
+			</div>
+			<div>
+				<span id="rb">right bottom</span>
+				<input type="range" value="10" min="0" max="200" id="brb" oninput="resizeborder(this);">
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	const box = document.getElementById('box');
+	const code = document.getElementById('code');
+	const b1 = document.getElementById('lt');
+	const b2 = document.getElementById('rt');
+	const b3 = document.getElementById('rb');
+	const b4 = document.getElementById('lb');
+
+	var lt = '10px';
+	var rt = '10px';
+	var lb = '10px';
+	var rb = '10px';
+
+	function resizeborder(input) {
+		let value = input.value + 'px';
+		let inputId = input.id;
+		if (inputId === 'blt') {
+			lt = value;
+			b1.innerText = "left top:"+lt;
+		}
+		if (inputId === 'brt') {
+			rt = value;
+			b2.innerText = "right top:"+rt;
+		}
+		if (inputId === 'blb') {
+			lb = value;
+			b4.innerText = "left bottom:"+lb;
+		}
+		if (inputId === 'brb') {
+			rb = value;
+			b3.innerText = "right bottom"+rb;
+		}
+		box.style.borderRadius = lt+' '+rt+' '+rb+' '+lb;
+		code.innerText = ".box {\n\tborder-radius: "+lt+' '+rt+' '+rb+' '+lb+";\n}";
+	}
+	function changewidth(){
+		var width = document.getElementById('wv').value;
+		var mw = document.getElementById('mw');
+		if(width >= 100 && width <= 350){
+			box.style.width = width+"px";
+			box.style.height = width+"px";
+		}
+		mw.innerText = width+"x"+width+"px";
+	}
+</script>
+
+</body>
+</html>
